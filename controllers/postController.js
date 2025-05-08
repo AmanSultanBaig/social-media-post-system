@@ -6,7 +6,6 @@ const createPost = async (req, res) => {
     const { content, platform } = req.body;
     const { id: userId } = req.user;
 
-    console.log()
     const postData = {
       user_id: userId,
       content,
@@ -22,7 +21,20 @@ const createPost = async (req, res) => {
 
 const getAllPosts = async (req, res) => {
   try {
-    const posts = await postService.getAllPosts();
+    const { platform, page = 1, limit = 10 } = req.query;
+    const { id: userId } = req.user;
+
+    const postQuery = {
+      userId,
+      platform,
+    };
+
+    const pagination = {
+      page,
+      limit,
+    };
+
+    const posts = await postService.getAllPosts(postQuery, pagination);
     return successResponse(res, "Fetched all posts", 200, posts);
   } catch (err) {
     return errorResponse(res, err.message, 400);
