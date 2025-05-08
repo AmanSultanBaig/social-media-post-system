@@ -1,0 +1,124 @@
+{
+	"info": {
+		"_postman_id": "f93abafa-4165-464e-85fd-0d776effe923",
+		"name": "Social-Media-Posts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "7566450"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Aman Sultan Baig\",\n    \"email\": \"amansultanbaig@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/auth/sign-up"
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"amansultanbaig@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/auth/login"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "create-post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWNlMzIzNDljYWI5OTY3MWMxMzA1NiIsImlhdCI6MTc0NjcyNTA5OSwiZXhwIjoxNzQ2NzI4Njk5fQ.6M9LvskzgHyQX-NghdFxWab6-GN6xYjNtLolcXtmRwc"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"The post is for facebook\",\n    \"platform\": \"facebook\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8000/api/posts/create-post"
+					},
+					"response": []
+				},
+				{
+					"name": "get-posts",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MWNlMzIzNDljYWI5OTY3MWMxMzA1NiIsImlhdCI6MTc0NjcyNTA5OSwiZXhwIjoxNzQ2NzI4Njk5fQ.6M9LvskzgHyQX-NghdFxWab6-GN6xYjNtLolcXtmRwc"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\": \"The post is awesome\",\n    \"platform\": \"m\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/posts?platform=instagram",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "platform",
+									"value": "instagram"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
