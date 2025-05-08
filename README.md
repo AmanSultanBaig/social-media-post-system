@@ -29,7 +29,7 @@ Before running the application, make sure you have the following installed:
 
     ```bash
     git clone https://github.com/your-username/post-management-api.git
-    cd post-management-api
+    cd social-media-post-system
     ```
 
 2. Install the dependencies:
